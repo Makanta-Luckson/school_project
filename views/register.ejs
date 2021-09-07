@@ -1,64 +1,67 @@
 <%- include('./partials/head.ejs') %> 
 
-<%- include('./partials/nav.ejs') %> 
+    <%- include('./partials/nav.ejs') %> 
 
         <div class="container">
             <h1>User Registrastion</h1>
             <div class="row">
                <div class="col-lg-6 col-sm-12">
+
+                <%- include('./partials/errors.ejs') %> 
+
                    <form action="/users/register" method="POST">
                     <div class="mb-3">
                         <strong><label for="first_name" class="form-label">First Name</label></strong>
-                        <input type="text" class="form-control" id="first_name" placeholder="example: Luckson" name="first_name" required>
+                        <input type="text" class="form-control" id="first_name" placeholder="example: Luckson" name="first_name" >
                       </div>
 
                       <div class="mb-3">
                         <strong><label for="last_name" class="form-label">Last Name</label></strong>
-                        <input type="text" class="form-control" id="last_name" placeholder="example: Makanta" name="last_name" required>
+                        <input type="text" class="form-control" id="last_name" placeholder="example: Makanta" name="last_name" >
                       </div>
                       <div class="mb-3">
                         <strong><label for="email" class="form-label">Email address</label></strong>
-                        <input type="email" class="form-control" id="email" placeholder="example: makantaluckson71@gmail.com" name="email" required>
+                        <input type="email" class="form-control" id="email" placeholder="example: makantaluckson71@gmail.com" name="email">
                       </div>
 
                       <div class="mb-3">
                         <strong><label for="number" class="form-label">Computer Number</label></strong>
-                        <input type="text" class="form-control" id="first_name" placeholder="example: 2017006974" name="number" required>
+                        <input type="text" class="form-control" id="first_name" placeholder="example: 2017006974" name="number">
                       </div>
                       <strong><label for="">Choose Department</label></strong>
-                      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="dep" required>
+                      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="dep">
                         <option value="Library & Information Science">Library & Information Science</option>
                         <option value="Social Science">Social Science</option>
                         <option value="Religious & Ethics">Religious & Ethics</option>
                       </select>
                         <strong><label for="sex">Gender</label></strong>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="Male" required>
+                            <input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="Male">
                             <label class="form-check-label" for="exampleRadios2">
                               Male
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="Female" required>
+                            <input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="Female">
                             <label class="form-check-label" for="exampleRadios2">
                               Female
                             </label>
                           </div>
                           <strong><label for="role">Role</label></strong>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="role" value="Admin" required>
+                            <input class="form-check-input" type="radio" name="role" id="role" value="Admin" >
                             <label class="form-check-label" for="role">
                               Admin
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="role" value="Lecturer" required>
+                            <input class="form-check-input" type="radio" name="role" id="role" value="Lecturer" >
                             <label class="form-check-label" for="role">
                               Lecturer
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="role" value="Student" required>
+                            <input class="form-check-input" type="radio" name="role" id="role" value="Student" >
                             <label class="form-check-label" for="role">
                               Student
                             </label>
@@ -72,4 +75,4 @@
 
 
 
-<%- include('./partials/head.ejs') %> 
+<%- include('./partials/footer.ejs') %> 

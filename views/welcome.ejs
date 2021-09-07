@@ -3,7 +3,21 @@
 <%- include('./partials/nav.ejs') %> 
 
 <div class="container">
-<h1>Welcome, </h1>
+   
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+           <h1>Welcome,  <%= user.first_name %> <%= user.last_name %></h1>
+           <hr>
+           <h4>User ID : <%= user.number %></h4> 
+           <hr>
+           <h4>User Email : <%= user.email %></h4> 
+           <hr>
+           <h4>Department : <%= user.dep %></h4> 
+           <hr>
+           <h4>User role : <%= user.role %></h4> 
+           <hr>
+        </div>
+    </div>
    
 </div>
 

@@ -2,9 +2,34 @@
 
 <%- include('./partials/nav.ejs') %>
 
-<div class="container">
-   <h1>Lecturers</h1>
-</div>
+            <div class="container">
+            <h1>Lecturers</h1>
+            <% if (users.length > 0) {%> 
+                 <% let counter = 0 %> 
+
+                    <% users.forEach(user => { %>
+                        
+                        <% if (user.role === 'Lecturer') { %>
+                            <% counter++ %>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-6">
+                                  
+                                        <a href="">
+                                            <h3> <%= user.first_name %> <%= user.last_name %></h3>
+                                            <h4><%= user.email %> </h4>
+                                        </a>
+                                    <hr>
+                                </div>
+                            </div>
+                        <% } %>
+
+                     <%  }) %>  
+
+                         <% if  (counter.length === 0) { %>
+                            <h1>There is no lectuerer that has been registered yet</h1>
+                         <%  } %>
+                <% } %> 
+            </div>
 
 
 <%- include('./partials/head.ejs') %> 

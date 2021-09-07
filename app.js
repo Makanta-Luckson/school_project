@@ -1,19 +1,45 @@
             const express = require('express');
             const mongoose = require('mongoose');
             const { url } = require('./config/connect');
+            const strategy = require('./config/logConfig');
+            const session = require('express-session');
+            const flash = require('connect-flash');
+            const passport = require('passport');
+        
             const app = express();
 
             app.set('view engine', 'ejs');
             app.use(express.static('public'));
 
-            app.use(express.urlencoded({extended : false}));
+            
             // database connection
             mongoose.connect(url, {useNewUrlParser : true, useUnifiedTopology : true})
             .then(() => {console.log('Database connected')})
             .catch(err => console.log(err))
 
 
-            //routes
+            //express sessions
+            app.use(session({
+                secret: 'keyboard cat',
+                resave: true,
+                saveUninitialized: true
+              }))
+
+              app.use(passport.initialize());
+              app.use(passport.session());
+
+              //flash connect
+              app.use(flash());
+
+              //login flash messages
+              app.use((req, res, next) => {
+                  res.locals.error = req.flash('error')
+                next();
+              });
+
+              app.use(express.urlencoded({extended : false}));
+            
+           //routes
             app.use('/', require('./routes/index'))
             app.use('/users', require('./routes/users'));
 

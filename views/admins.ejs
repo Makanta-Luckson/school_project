@@ -4,7 +4,28 @@
 
 <div class="container">
     <h1>Admins</h1>
+    <% if (users.length  !== 0) { %>
+      
+
+        <% users.forEach(user => { %>
+            
+            <% if (user.role === 'Admin') { %>
+               <div class="row">
+                    <div class="col-sm-12 col-md-8 col-lg-6">
+                       
+                        <a href="">
+                            <h3> <%= user.first_name %> <%= user.last_name %></h3>
+                            <h4><%= user.email %> </h4>
+                        </a> 
+                       
+                        <hr>
+                    </div>
+               </div>
+            <% } %>
+
+         <%  }) %>  
+<% } %> 
 </div>
 
 
-<%- include('./partials/head.ejs') %> 
+<%- include('./partials/footer.ejs') %> 
