@@ -1,9 +1,12 @@
 <%- include('./partials/head.ejs') %> 
+<div class="container">
+    <p style="color: red;">Hello <%= user.first_name %>, you are logged in as a <%= user.role %><a href="/logout">  [logout]</a></p>
+</div>
 
 <%- include('./partials/nav.ejs') %> 
 
 <div class="container">
-   
+    <h1><a href="">change password</a></h1>
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-12">
            <h1>Welcome,  <%= user.first_name %> <%= user.last_name %></h1>
@@ -16,7 +19,8 @@
            <hr>
            <h4>User role : <%= user.role %></h4> 
            <hr>
-        </div>
+        </div> 
+        
     </div>
    
 </div>

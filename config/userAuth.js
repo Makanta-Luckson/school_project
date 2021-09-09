@@ -1,8 +1,9 @@
-module.exports = {
-    function(req, res, next) {
-        if (req.user === '') {
-            res.send('Please login first')
-            next();
-        }
+function authUser(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect('/login')
     }
 }
+
+module.exports = { authUser };
