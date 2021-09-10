@@ -1,11 +1,11 @@
             const express = require('express');
             const router = express.Router();
             const { User } = require('../schemas/user');
-            const { userAuth } = require('../config/userAuth');
+            const { authUser } = require('../config/userAuth');
             const bcrypt = require('bcryptjs');
 
 
-            router.get('/register',  (req, res) => {res.render('register', {title : '| Register', errors : ''})});
+            router.get('/register',  authUser, (req, res) => {res.render('register', {title : '| Register', errors : ''})});
 
                 //Admins handler
             router.get('/admins',    (req, res) => {
@@ -18,7 +18,7 @@
 
 
                 //students handler
-            router.get('/students',  (req, res) => {
+            router.get('/students',  authUser, (req, res) => {
                 User.find()
                 .then(users => {
                     
@@ -28,7 +28,7 @@
             });
 
                 //lecturers handler
-            router.get('/lecturers', (req, res) => {
+            router.get('/lecturers', authUser, (req, res) => {
                 User.find()
                 .then(user => {
 
@@ -38,7 +38,7 @@
             });
 
             //register user handler
-            router.post('/register', (req, res) => {
+            router.post('/register', authUser, (req, res) => {
                 
                 let errors = [];
 

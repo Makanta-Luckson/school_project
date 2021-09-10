@@ -1,9 +1,10 @@
-function authUser(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    } else {
-        res.redirect('/login')
+module.exports = {
+
+    authUser : function (req, res, next) {
+        if (req.user == null) {
+                res.redirect('/login')
+        } else {
+            return next();
+        }
     }
 }
-
-module.exports = { authUser };
