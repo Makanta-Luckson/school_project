@@ -6,7 +6,7 @@
             const bcrypt = require('bcryptjs');
             
             
-            router.get('/register',  authUser, (req, res) => {res.render('register', {title : '| Register', errors : ''})});
+            router.get('/register', authUser, (req, res) => {res.render('register', {title : '| Register', errors : ''})});
 
                 //Admins handler
             router.get('/admins',    (req, res) => {
@@ -39,7 +39,7 @@
             });
 
             //register user handler
-            router.post('/register', authUser, (req, res) => {
+            router.post('/register', authUser,(req, res) => {
                 
                 let errors = [];
 
