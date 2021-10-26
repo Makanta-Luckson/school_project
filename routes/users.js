@@ -2,9 +2,10 @@
             const router = express.Router();
             const { User } = require('../schemas/user');
             const { authUser } = require('../config/userAuth');
+            //const userMailer  = require('../config/autoEmails');
             const bcrypt = require('bcryptjs');
-
-
+            
+            
             router.get('/register',  authUser, (req, res) => {res.render('register', {title : '| Register', errors : ''})});
 
                 //Admins handler
@@ -43,7 +44,10 @@
                 let errors = [];
 
                 const { first_name, last_name, email, number, dep, sex, role } = req.body;
-
+                const userEmail = email; 
+                const link = 'https://clearance-system.herokuapp.com';
+                const message = `You have been registered to use the ONLINE COURSE CLEARANCE SYSTEM, click the link ${link} to access the platform, below are the details to use when loging in \n use your email : ${userEmail} & your computer number : ${number}  to sign in`;
+                
                                 
                 if (!first_name, !last_name, !email, !number, !dep, !sex, !role) {
                     errors.push('Please make sure that all fiels that are field')
@@ -57,9 +61,11 @@
                         //check email existence
                         User.findOne({email : email})
                         .then(user => {
+                          
                             if (user) {res.render('register', {title : '| register', errors : 'The email you entered is already registered'})}
 
                             if (!user) {
+                               
                                //password hashing
                         const saltRounds = 10;
                         bcrypt.genSalt(saltRounds, function(err, salt) {
@@ -73,7 +79,10 @@
                                   
                                  // saving user in the database
                                  user.save()
-                                 .then(() => {res.redirect('/')})
+                                 .then(() => {
+                                     //userMailer(message, userEmail);
+                                     res.redirect('/');
+                                    })
                                  .catch(err => console.log(err))
                             });
                         }); 
@@ -83,6 +92,9 @@
                     }
 
                 });
+
+              
+                
 
               
 
