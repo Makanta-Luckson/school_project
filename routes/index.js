@@ -38,6 +38,9 @@ router.post('/login', (req, res, next) => {
  })(req, res, next)
 });
 
+//student registration
+router.get('/studentRegister', (req, res) => {res.render('studentRegister', {title : '| Registration', errors : ''})});
+
 
 // logout handler
 router.get('/logout', ( req, res ) => {

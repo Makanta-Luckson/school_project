@@ -95,6 +95,9 @@
                 });
 
               
+               router.get('/student', (req, res) => {
+                   res.send('Received');
+               });
                 
 
               

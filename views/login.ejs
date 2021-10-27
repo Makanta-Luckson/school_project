@@ -189,12 +189,15 @@ a:hover {
                                 <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="https://i.imgur.com/PSXxjNY.png"> </div>
                                 <h1 class="mb-5 text-center heading">Login</h1>
                                 <h6 class="msg-info">Please login to your account</h6>
-                                <div class="form-group"> <label class="form-control-label text-muted">User Email</label> <input type="text" id="email" name="email" placeholder="user email" class="form-control"> </div>
-                                <div class="form-group"> <label class="form-control-label text-muted">User Password</label> <input type="password" id="password" name="password" placeholder="Password" class="form-control"> </div>
+                                <div class="form-group"> <label class="form-control-label text-muted">User Email</label> <input type="text" id="email" name="email" placeholder="user email" class="form-control" required> </div>
+                                <div class="form-group"> <label class="form-control-label text-muted">User Password</label> <input type="password" id="password" name="password" placeholder="Password" class="form-control" required> </div>
                                 <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color">Sign in</button> </div>
                                
                             </div>
                         </div>
+
+                        
+                       
                     </div>
                     <div class="card card2">
                         <div class="my-auto mx-md-5 px-md-5 right">
@@ -208,7 +211,14 @@ a:hover {
     
     </form>
 
-    
+    <a href="/users/student">
+        <div class="bottom text-center mb-5">
+            <p class="sm-text mx-auto mb-3">Don't have an account?<button class="btn btn-white ml-2">Create new</button></p>
+        </div>
+    </a>
+
+           
+
 
 
 <script>
