@@ -5,9 +5,6 @@
             //const userMailer  = require('../config/autoEmails');
             const bcrypt = require('bcryptjs');
             
-            
-            router.get('/register', authUser, (req, res) => {res.render('register', {title : '| Register', errors : ''})});
-
                 //Admins handler
             router.get('/admins',    (req, res) => {
                 User.find()
@@ -38,9 +35,13 @@
                 
             });
 
+            //rendering the registration form
+
+            router.get('/register', authUser, (req, res) => {res.render('register', {title : '| Register', errors : ''})});
+
             //register user handler
             router.post('/register', authUser,(req, res) => {
-                
+
                 let errors = [];
 
                 const { first_name, last_name, email, number, dep, sex, role } = req.body;
@@ -76,7 +77,7 @@
                                  
                                  //creating a new user
                                  const user = new User({first_name, last_name, email, number, dep, sex, role, password });
-                                  
+                                
                                  // saving user in the database
                                  user.save()
                                  .then(() => {

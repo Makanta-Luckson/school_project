@@ -1,6 +1,6 @@
             const express = require('express');
             const mongoose = require('mongoose');
-            const { url } = require('./config/connect');
+            const { db_url } = require('./config/connect');
             const strategy = require('./config/logConfig');
             const session = require('express-session');
             const flash = require('connect-flash');
@@ -13,7 +13,7 @@
 
             
             // database connection
-            mongoose.connect(url, {useNewUrlParser : true, useUnifiedTopology : true})
+            mongoose.connect(db_url, {useNewUrlParser : true, useUnifiedTopology : true})
             .then(() => {console.log('Database connected')})
             .catch(err => console.log(err))
 
