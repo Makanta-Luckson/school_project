@@ -96,10 +96,14 @@
 
               
                router.get('/student', (req, res) => {
-                   res.send('Received');
+                   res.render('studentRegister', {title : '| Register', errors : ''});
                });
                 
-
+                //student register handler
+                router.post('/student', (req, res) => {
+                    console.log(req.body);
+                    res.send('<h1>Ooooops, sorry Makanta will start handling the back end soon</h1>');
+                });
               
 
 
