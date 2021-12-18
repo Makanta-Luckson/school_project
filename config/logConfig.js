@@ -9,9 +9,11 @@ module.exports = function(passport) {
     new LocalStrategy({usernameField : 'email'}, function(email, password, done) {
             User.findOne({email : email})
             .then(user => {
+
                 if (!user) {
                     return done(null, false, {message : 'The email you entered is not registered'})
                 }
+                
                 else {
 
                     bcrypt.compare(password, user.password, function(err, isMatch) {

@@ -1,0 +1,23 @@
+<%- include('./partials/head.ejs') %> 
+
+<%- include('./partials/student_nav.ejs') %> 
+
+<div class="container">
+   
+    <ul>
+      <% lecturers.forEach(lecturer => { %>
+             <% if (lecturer.role === 'Lecturer'){ %>
+                <li>
+                    <a href=""><h4><%= lecturer.first_name %> <%= lecturer.last_name %></h4></a>
+                </li>
+              
+
+                   
+           <%  } %> 
+   <%   }) %> 
+    </ul>
+   
+</div>
+
+
+<%- include('./partials/head.ejs') %> 

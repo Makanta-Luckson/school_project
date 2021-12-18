@@ -6,7 +6,7 @@
             const bcrypt = require('bcryptjs');
             
                 //Admins handler
-            router.get('/admins',    (req, res) => {
+            router.get('/admins', (req, res) => {
                 User.find()
                 .then(users => {
                     res.render('admins', {title : '| Admins', errors : '', users : users })
@@ -16,7 +16,7 @@
 
 
                 //students handler
-            router.get('/students',  authUser, (req, res) => {
+            router.get('/students', (req, res) => {
                 User.find()
                 .then(users => {
                     
@@ -24,6 +24,13 @@
                 }).catch(err => console.log(err))
             
             });
+
+            router.get('/view-lecturers', (req, res) => {
+                User.find()
+                .then(lecturers => {
+                    res.render('view_lecturers', {lecturers, title : '| View Lecturers'});
+                }).catch(err => console.log(err))
+            })
 
                 //lecturers handler
             router.get('/lecturers', authUser, (req, res) => {
@@ -45,9 +52,9 @@
                 let errors = [];
 
                 const { first_name, last_name, email, number, dep, sex, role } = req.body;
-                const userEmail = email; 
-                const link = 'https://clearance-system.herokuapp.com';
-                const message = `You have been registered to use the ONLINE COURSE CLEARANCE SYSTEM, click the link ${link} to access the platform, below are the details to use when loging in \n use your email : ${userEmail} & your computer number : ${number}  to sign in`;
+                // const userEmail = email; 
+                // const link = 'https://clearance-system.herokuapp.com';
+                // const message = `You have been registered to use the ONLINE COURSE CLEARANCE SYSTEM, click the link ${link} to access the platform, below are the details to use when loging in \n use your email : ${userEmail} & your computer number : ${number}  to sign in`;
                 
                                 
                 if (!first_name, !last_name, !email, !number, !dep, !sex, !role) {
@@ -95,14 +102,35 @@
                 });
 
               
-               router.get('/student', (req, res) => {
+               router.get('/student-register', (req, res) => {
                    res.render('studentRegister', {title : '| Register', errors : ''});
                });
                 
                 //student register handler
                 router.post('/student', (req, res) => {
-                    console.log(req.body);
-                    res.send('<h1>Ooooops, sorry Makanta will start handling the back end soon</h1>');
+
+                    const {first_name, last_name, email, number, dep, sex, role } = req.body;
+
+                    User.findOne({number : number})
+
+                    .then(user => {
+                        if (user) {
+                            res.render('studentregister', {error : 'The computer number you have entered is already registered', title : '| Register'})
+                        }
+
+                        if (!user) {
+                            let newStudent = new User({first_name, last_name, email, number, dep, sex, role});
+                            bcrypt.hash(number, 10).then(function(hash) {
+                                newStudent.password = hash;
+                                newStudent.save()
+                                .then( () => {
+                                    res.redirect('/login')
+                                })
+                                .catch(err => console.log(err))
+                            })
+                        }
+                    }).catch(err => console.log(err))
+                    
                 });
               
 
