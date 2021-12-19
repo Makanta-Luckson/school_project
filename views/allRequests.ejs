@@ -1,0 +1,21 @@
+<%- include('./partials/head.ejs') %> 
+
+<%- include('./partials/lecturer_nav.ejs') %> 
+
+<div class="container">
+    <h2>Your Availabe Requests will Be Listed Below</h2>
+    
+    <% requests.forEach( request => { %>
+        <ul>
+            <% if (user._id == request.id) { %>
+                <h4>
+              <li><a href="/users/view-requests/<%= request._id %> "><%= request.userNames %> </a></li>
+              </h4>
+                <%  } %> 
+        </ul>
+    <%  }) %> 
+   
+</div>
+
+
+<%- include('./partials/head.ejs') %> 

@@ -8,10 +8,8 @@
       <% lecturers.forEach(lecturer => { %>
              <% if (lecturer.role === 'Lecturer'){ %>
                 <li>
-                    <a href=""><h4><%= lecturer.first_name %> <%= lecturer.last_name %></h4></a>
+                    <a href="/users/lecturer/<%= lecturer._id %> "><h4><%= lecturer.first_name %> <%= lecturer.last_name %></h4></a>
                 </li>
-              
-
                    
            <%  } %> 
    <%   }) %> 

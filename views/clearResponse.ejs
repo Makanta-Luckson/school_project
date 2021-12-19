@@ -1,0 +1,61 @@
+<%- include('./partials/head.ejs') %> 
+
+<%- include('./partials/lecturer_nav.ejs') %> 
+
+<div class="container">
+    
+    
+                <h3>Student : <%= request.userNames %> </h3>
+                <h3>Student ID : <%= request.senderId %> </h3>
+                <h5>Course Name : <%= request.name %> </h5>
+                <h5>Course Code : <%= request.code %> </h5>
+    
+
+    <hr>
+<h3>Respond In the Form Below</h3>
+    <form action="/users/request-response" method="post">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" class="form-control" placeholder="Student ID" aria-label="Username" name="id" aria-describedby="basic-addon1" required>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" class="form-control" placeholder="Code Code" name="code" aria-label="Username" aria-describedby="basic-addon1" required>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" value="Cleared" id="flexRadioDefault1" required>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Approve Clear Request
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" value="Denied" id="flexRadioDefault2" required>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Deny Clear Request
+                    </label>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="btn btn-primary">Submit Response</button>
+            </div>
+        </div>
+    </form>
+
+   
+</div>
+
+
+
+<%- include('./partials/head.ejs') %> 

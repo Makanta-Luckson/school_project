@@ -2,11 +2,14 @@
             const router = express.Router();
             const { User } = require('../schemas/user');
             const { authUser } = require('../config/userAuth');
-            //const userMailer  = require('../config/autoEmails');
+            
+            const ResponseModel = require('../schemas/response');
+            const RequestMode = require('../schemas/clearRequest');
+
             const bcrypt = require('bcryptjs');
             
                 //Admins handler
-            router.get('/admins', (req, res) => {
+            router.get('/admins', authUser, (req, res) => {
                 User.find()
                 .then(users => {
                     res.render('admins', {title : '| Admins', errors : '', users : users })
@@ -14,9 +17,18 @@
             
             });
 
+            //lecturers viewing student details
+            router.get('/student-details/:id', authUser, (req, res) => {
+                const id = req.params.id;
+                User.findById(id)
+                .then(student => {
+                        res.render('studentDetails', {title: '| Student Details', student})
+                }).catch(err => console.log(err))
+            });
+
 
                 //students handler
-            router.get('/students', (req, res) => {
+            router.get('/students', authUser, (req, res) => {
                 User.find()
                 .then(users => {
                     
@@ -25,10 +37,67 @@
             
             });
 
-            router.get('/view-lecturers', (req, res) => {
+            router.get('/view-lecturers', authUser, (req, res) => {
                 User.find()
                 .then(lecturers => {
                     res.render('view_lecturers', {lecturers, title : '| View Lecturers'});
+                }).catch(err => console.log(err))
+            });
+
+            //Course clearance Requests
+            router.post('/clear', authUser, (req, res) => {
+                const requestMode = new RequestMode(req.body);
+                 requestMode.save()
+                 .then(() => {res.redirect('/')})
+                 .catch(err => console.log(err))
+            });
+
+                //Lecturer view requests
+                router.get('/view-requests', authUser, (req, res) => {
+                    const user = req.user;
+                    RequestMode.find()
+                    .then(requests => {
+                        res.render('allRequests', {title : '| Lecturer Requests', requests, user})
+                    }).catch(err => console.log(err))
+                })
+
+
+            //Lecturer viewing single Request
+            router.get('/view-requests/:id', authUser, (req, res) => {
+                const id = req.params.id;
+                RequestMode.findById(id)
+                .then((request) => {
+                    res.render('clearResponse.ejs', {title : '| Clear Course Response', request})
+                })
+                .catch(err => console.log(err))
+            });
+
+            //response form the lecturer
+            router.post('/request-response', authUser, (req, res) => {
+                const { id, code, status } = req.body;
+                const response = new ResponseModel({id, code, status});
+                response.save()
+                .then(() => {res.redirect('/')})
+                .catch(err => console.log(err))
+            })
+
+            //Students cleared courses
+            router.get('/view-cleared', authUser, (req, res) => {
+                const user = req.user;
+                ResponseModel.find()
+                .then(results => {
+                    res.render('cleared', {title : '| cleared Courses', results, user});
+                }).catch(err => console.log(err))
+            });
+
+
+            //single lecturer and and send request
+            router.get('/lecturer/:id', authUser, (req, res) => {
+                const user = req.user;
+                const id = req.params.id;
+                User.findById(id)
+                .then((lecturer) => {
+                    res.render('sendRequest', {title : '| Clear Request', user, lecturer})
                 }).catch(err => console.log(err))
             })
 
@@ -36,7 +105,6 @@
             router.get('/lecturers', authUser, (req, res) => {
                 User.find()
                 .then(user => {
-
                     res.render('lecturers', {title : '| Lecturers', errors : '', users : user})
                 }).catch(err => console.log(err))
                 
@@ -44,10 +112,10 @@
 
             //rendering the registration form
 
-            router.get('/register', authUser, (req, res) => {res.render('register', {title : '| Register', errors : ''})});
+            router.get('/register', authUser,  (req, res) => {res.render('register', {title : '| Register', errors : ''})});
 
             //register user handler
-            router.post('/register', authUser,(req, res) => {
+            router.post('/register', authUser, (req, res) => {
 
                 let errors = [];
 

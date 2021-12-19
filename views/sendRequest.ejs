@@ -1,0 +1,56 @@
+<%- include('./partials/head.ejs') %> 
+
+<%- include('./partials/student_nav.ejs') %> 
+
+<div class="container">
+   <h3>Hello, <%= user.first_name %> <%= user.last_name %> </h3>
+   <h4>You can fill in the form below to send the Course clearance Request</h4>
+   <p>Lecturer's ID :  <%= lecturer._id %> </p>
+    <br>
+      <form action="/users/clear" method="post">
+        <div class="row">
+          <div class="col-lg-6">
+              <strong><label for="">Enter your Full Names</label></strong>
+            <input type="text" class="form-control" placeholder="course name" name="userNames">
+          </div>
+      </div>
+          <div class="row">
+              <div class="col-lg-6">
+                  <strong><label for="">Enter Full Course Name</label></strong>
+                <input type="text" class="form-control" placeholder="course name" name="name">
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+                <strong><label for="">Enter Couse Code</label></strong>
+              <input type="text" class="form-control" placeholder="course code" name="code">
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+              <strong><label for="">Enter Your Computer Number</label></strong>
+            <input type="text" class="form-control" placeholder="course code" name="senderId">
+          </div>
+      </div>
+
+
+        <div class="row">
+            <div class="col-lg-6">
+                <strong><label for="">Copy the Lecturer's ID & past it here</label></strong>
+              <input type="text" class="form-control" placeholder="Lecturer's ID" name="id">
+            </div>
+          </div>
+        </div>
+       
+            <div>
+                <button>Submit</button>
+            </div>
+        
+      </form>
+    
+   
+</div>
+
+
+<%- include('./partials/head.ejs') %> 

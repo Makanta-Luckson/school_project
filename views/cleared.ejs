@@ -1,0 +1,20 @@
+<%- include('./partials/head.ejs') %> 
+
+<%- include('./partials/student_nav.ejs') %> 
+
+<div class="container">
+   <h3>Clearance status</h3>
+
+    <% results.forEach(result => { %>
+        <% if (result.id === user.number){ %>
+
+           <h5><%= result.code %>  status  <%= result.status %>  </h5>
+
+      <%  } %> 
+   <%  }) %> 
+      
+</div>
+
+
+
+<%- include('./partials/head.ejs') %> 
