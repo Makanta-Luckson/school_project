@@ -2,17 +2,20 @@
 
 <%- include('./partials/student_nav.ejs') %> 
 
-<div class="container">
+<div style="text-align: center;">
    <h3>Clearance status</h3>
 
     <% results.forEach(result => { %>
         <% if (result.id === user.number){ %>
 
-           <h5><%= result.code %>  status  <%= result.status %>  </h5>
+           <h5><%= result.code %> =============  status ==========  <%= result.status %>  </h5>
 
       <%  } %> 
    <%  }) %> 
-      
+   
+   
+   <br><br>
+   <p style="text-align: center;">For any querries please reach out to your course lecturer</p>
 </div>
 
 

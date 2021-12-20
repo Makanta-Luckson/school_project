@@ -120,10 +120,6 @@
                 let errors = [];
 
                 const { first_name, last_name, email, number, dep, sex, role } = req.body;
-                // const userEmail = email; 
-                // const link = 'https://clearance-system.herokuapp.com';
-                // const message = `You have been registered to use the ONLINE COURSE CLEARANCE SYSTEM, click the link ${link} to access the platform, below are the details to use when loging in \n use your email : ${userEmail} & your computer number : ${number}  to sign in`;
-                
                                 
                 if (!first_name, !last_name, !email, !number, !dep, !sex, !role) {
                     errors.push('Please make sure that all fiels that are field')
