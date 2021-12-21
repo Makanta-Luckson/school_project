@@ -92,7 +92,7 @@
 
 
             //single lecturer and and send request
-            router.get('/lecturer/:id', authUser, (req, res) => {
+            router.get('/lecturer-details/:id', authUser, (req, res) => {
                 const user = req.user;
                 const id = req.params.id;
                 User.findById(id)
@@ -109,6 +109,29 @@
                 }).catch(err => console.log(err))
                 
             });
+
+
+
+            //get details of a single lecturer
+            router.get('/lecturer-view-details/:id', (req, res) => {
+                const id = req.params.id;
+                User.findById(id)
+                .then(lecturer => {
+                    res.render('lecturer_details', {title : '| Lecturer Details', lecturer})
+                })
+                .catch(err => console.log(err))
+            })
+
+            router.get('/admin-details/:id', (req, res) => {
+                const id = req.params.id;
+                User.findById(id)
+                .then(admin => {
+                    res.render('admin_details', {title : '| Lecturer Details', admin})
+                })
+                .catch(err => console.log(err))
+            })
+
+
 
             //rendering the registration form
 

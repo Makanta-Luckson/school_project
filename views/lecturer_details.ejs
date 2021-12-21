@@ -1,0 +1,17 @@
+<%- include('./partials/head.ejs') %> 
+
+<%- include('./partials/lecturer_nav.ejs') %>
+
+<div style="text-align: center;">
+<h1>Lecturer's Details</h1>
+   <h5>Full Names : <%= lecturer.first_name %> <%= lecturer.last_name %></h5>
+   <h5>Email Address : <%= lecturer.email %> </h5>
+   <h5>User ID Number : <%= lecturer.number %> </h5>
+   <h5>Department : <%= lecturer.dep %> </h5>
+   <h5>Role : <%= lecturer.role %> </h5>
+   <h5>Date Registered : <%= lecturer.createdAt %> </h5>
+  
+</div>
+
+
+<%- include('./partials/footer.ejs') %> 

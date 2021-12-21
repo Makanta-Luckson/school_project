@@ -1,6 +1,6 @@
 <%- include('./partials/head.ejs') %> 
 
-<%- include('./partials/nav.ejs') %>
+<%- include('./partials/lecturer_nav.ejs') %>
 
             <div class="container">
             <h1>Lecturers</h1>
@@ -14,7 +14,7 @@
                             <div class="row">
                                 <div class="col-sm-12 col-lg-6">
                                   
-                                        <a href="">
+                                        <a href="/users/lecturer-view-details/<%= user._id %>">
                                             <h3> <%= user.first_name %> <%= user.last_name %></h3>
                                             <h4><%= user.email %> </h4>
                                         </a>
