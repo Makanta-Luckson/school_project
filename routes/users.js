@@ -74,8 +74,8 @@
 
             //response form the lecturer
             router.post('/request-response', authUser, (req, res) => {
-                const { id, code, status } = req.body;
-                const response = new ResponseModel({id, code, status});
+            
+                const response = new ResponseModel(req.body);
                 response.save()
                 .then(() => {res.redirect('/')})
                 .catch(err => console.log(err))
@@ -92,7 +92,7 @@
 
 
             //single lecturer and and send request
-            router.get('/lecturer-details/:id', authUser, (req, res) => {
+            router.get('/lecturer/:id', authUser, (req, res) => {
                 const user = req.user;
                 const id = req.params.id;
                 User.findById(id)
@@ -113,7 +113,7 @@
 
 
             //get details of a single lecturer
-            router.get('/lecturer-view-details/:id', (req, res) => {
+            router.get('/lecturer-details/:id', (req, res) => {
                 const id = req.params.id;
                 User.findById(id)
                 .then(lecturer => {

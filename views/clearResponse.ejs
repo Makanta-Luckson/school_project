@@ -13,45 +13,55 @@
 
     <hr>
 <h3>Respond In the Form Below</h3>
-    <form action="/users/request-response" method="post">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" class="form-control" placeholder="Student ID" aria-label="Username" name="id" aria-describedby="basic-addon1" required>
-                  </div>
+    <div class="container">
+        <form action="/users/request-response" method="post">
+            <div class="row">
+                <div class="col-lg-6">
+                   <strong><label for="exampleFormControlInput1" class="form-label">Computer Number</label></strong>
+                       <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Student computer Number" name="id" required> 
+                      </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" class="form-control" placeholder="Code Code" name="code" aria-label="Username" aria-describedby="basic-addon1" required>
-                  </div>
+           <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                   <strong><label for="exampleFormControlInput1" class="form-label">Code Code</label></strong>
+                       <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Course code" name="code" required> 
+                      </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status" value="Cleared" id="flexRadioDefault1" required>
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      Approve Clear Request
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status" value="Denied" id="flexRadioDefault2" required>
-                    <label class="form-check-label" for="flexRadioDefault2">
-                      Deny Clear Request
-                    </label>
-                  </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" value="Cleared" id="flexRadioDefault1" required>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          Approve Clear Request
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" value="Denied" id="flexRadioDefault2" required>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          Deny Clear Request
+                        </label>
+                      </div>
+                </div>
+               
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <button class="btn btn-primary">Submit Response</button>
+            <div class="row">
+                <div class="col-lg-6">
+                   <strong><label for="exampleFormControlTextarea1" class="form-label">Comment</label> </strong>
+                       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment"></textarea>
+                </div>
+                <br>
             </div>
-        </div>
-    </form>
+            <div class="row">
+                <div class="col-lg-6">
+                    <button class="btn btn-primary">Submit Response</button>
+                </div>
+            </div>
+           </div>
+        </form>
+    </div>
 
    
 </div>

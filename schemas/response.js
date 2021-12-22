@@ -7,6 +7,7 @@
         id : {type : String, required : true},
         code : {type : String, required : true},
         status : {type : String, required : true},
+        comment :{ type: String}
     });
 
     const ResponseModel = mongoose.model('respnse', responseSchema);
